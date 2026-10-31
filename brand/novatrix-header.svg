@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 120" width="520" height="120">
+  <defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#2DD4BF"/><stop offset="1" stop-color="#60A5FA"/></linearGradient></defs>
+  <!-- mark: three ascending chevrons forming an N -->
+  <path d="M20 95 L55 25 L75 25 L40 95 Z" fill="url(#g)"/>
+  <path d="M55 95 L90 25 L110 25 L75 95 Z" fill="url(#g)" opacity="0.75"/>
+  <path d="M90 95 L125 25 L145 25 L110 95 Z" fill="url(#g)" opacity="0.5"/>
+  <text x="170" y="72" font-family="Helvetica, Arial, sans-serif" font-weight="700" font-size="46" fill="#FFFFFF" letter-spacing="1">NOVATRIX</text>
+  <text x="172" y="100" font-family="Helvetica, Arial, sans-serif" font-weight="400" font-size="18" fill="#C7D2FE" letter-spacing="6">SOLUTIONS</text>
+</svg>
