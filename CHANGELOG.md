@@ -13,3 +13,4 @@
 - 2026-11-01 — Phase 5: public GitHub repository published at https://github.com/sparsh17max/servicenow-employee-training-management (one commit per phase, author line in README).
 - 2026-11-01 — Phase 4: Client Script *Validate End Date after Start Date* (onSubmit, Training Session) created via Table API in the app scope; `scripts/08-client-script-end-date.js` added. TC-11 passed in headless Chrome.
 - 2026-11-01 — Phase 4: Business Rule *Completed requires Completion Date* (before insert/update, Course Enrollment) created via Table API; `scripts/09-business-rule-completed-date.js` added. TC-12 passed via REST and UI.
+- 2026-11-01 — Phase 4 enhancement: Course Enrollment gets an auto-numbered display field `number` (ENR0001001…), existing records back-filled, Number first on forms and list; `scripts/10-enrollment-number-field.js` added. TC-13 passed.

@@ -106,3 +106,14 @@ Format for each entry: **what** I implemented, **why**, and **what I learned**.
 - **Learned:** The filter condition is evaluated before the script, so the script body stays trivial. Aborting from a before rule surfaces to the Table API as `403 Operation Failed … aborted by Business Rule`, and in the form as the custom message plus the platform's generic "Invalid update". `gs.getMessage()` keeps the text translatable.
 - **Tested (TC-12, passed):** REST `PATCH` of Luke Wilson's *requested* enrollment to `completed` with no date → 403 aborted, record unchanged. REST `POST` of a new completed enrollment without a date → 403, enrollment count still 14. UI: same record, status set to Completed, Update → red banner with the message, server still *requested*. Positive control: `completed` + `completion_date=2026-11-01` → 200, then reverted to *requested* with an empty date.
 - **Evidence:** `screenshots/business-rule-completed-blocked.png`
+
+## 2026-11-01 — Phase 4 enhancement: Course Enrollment auto-number (ENR…)
+- **What:** Added a `sys_number` record for Course Enrollment (prefix **ENR**, start 1000, 7 digits) and linked it from the table (`number_ref`). The platform created the `number` column on insert of the numbering record; I set it as the **display** field with default `javascript:global.getNextObjNumberPadded();`, back-filled the 14 existing enrollments in creation order (ENR0001001–ENR0001014), moved the counter to 1014, and put *Number* first on the Default, HR and Training Manager form views and on the default list. Reproducible as `scripts/10-enrollment-number-field.js`.
+- **Why:** Logged in Phase 2: enrollments were labelled "Created <timestamp>" in reference fields, related lists and approvals. A number is what the Phase 4 flow, notifications and reports should show.
+- **Learned:** Inserting a `sys_number` row auto-creates the `number` field and appends it to the default form, so the dictionary entry only needs `display` and layout position afterwards. In a scoped app the generated default is `global.getNextObjNumberPadded()` (the function lives in global), and my first patch to the un-prefixed name had to be reverted. `sys_db_object.number_ref` is what *Number Maintenance* shows for the table.
+- **Tested (TC-13, passed):** List shows the Number column first (ENR0001001 Beth Anglin …); a new enrollment form opens with Number pre-filled **ENR0001015**; the Table API display value of an existing record is now its number (`ENR0001003`).
+- **Evidence:** `screenshots/enrollment-list-number-column.png`, `screenshots/enrollment-form-auto-number.png`
+
+| Date | Issue | Resolution | Learning |
+|------|-------|------------|----------|
+| 2026-11-01 | Patched the dictionary default to `javascript:getNextObjNumberPadded();` (no `global.`), which would not resolve from the scoped table | Restored `javascript:global.getNextObjNumberPadded();` | Scoped apps call global script includes/functions with the `global.` prefix |

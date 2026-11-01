@@ -15,3 +15,4 @@ The same results can be achieved through the UI (*Configure → Form Layout / Li
 | `07-sample-data.js` | Creates the Phase 3 sample data: 6 courses, 6 sessions, 14 enrollments, 6 certifications (idempotent) — run in the **app** scope | 3 |
 | `08-client-script-end-date.js` | Creates the onSubmit Client Script *Validate End Date after Start Date* on Training Session (idempotent) — run in the **app** scope; the header comment gives the equivalent Table API call | 4 |
 | `09-business-rule-completed-date.js` | Creates the before insert/update Business Rule *Completed requires Completion Date* on Course Enrollment (idempotent) — run in the **app** scope | 4 |
+| `10-enrollment-number-field.js` | Adds the ENR auto-number (sys_number, display field, back-fill, layouts) to Course Enrollment (idempotent) — run in the **app** scope | 4 |
