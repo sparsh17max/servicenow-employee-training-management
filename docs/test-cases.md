@@ -12,5 +12,5 @@
 | TC-08 | Create a certification | Employee Certifications → New | Employee reference works | Certification form opens; Employee reference resolved; URL field renders as link (2026-10-31) | ✅ |
 | TC-09 | Filter by status | Enrollment list → filter Enrollment Status = Enrolled | Only matching records shown | Filter Enrollment Status = Completed returned 7 of 14 records (2026-10-31) | ✅ |
 | TC-10 | Virtual session location (Phase 4) | Set Delivery Mode = Virtual | Location no longer mandatory | | ⬜ |
-| TC-11 | End date validation (Phase 4) | End Date < Start Date → Submit | Submission blocked with message | | ⬜ |
+| TC-11 | End date validation (Phase 4) | End Date < Start Date → Submit | Submission blocked with message | Client Script prepared (`scripts/08`); not yet applied — PDI credentials rejected on 2026-11-01 | ⬜ |
 | TC-12 | Completed without date (Phase 4) | Status = Completed, no Completion Date → Save | Server aborts save with error | | ⬜ |

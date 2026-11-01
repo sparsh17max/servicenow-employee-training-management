@@ -10,3 +10,5 @@
 - 2026-10-31 — Instance branded for fictional customer **Novatrix Solutions**: primary company record, logo assets under `brand/`, UI16 header caption/title/colours/banner image. Scripts 05–06 added.
 - 2026-10-31 — Phase 3 complete: sample data (6 courses, 6 sessions, 14 enrollments, 6 certifications), TC-01…09 passed, navigator favourites configured. `docs/sample-data.md` and `scripts/07-sample-data.js` added.
 - 2026-11-01 — Project handed over to Claude Code: `CLAUDE.md`, `docs/HANDOFF.md`, `.env.example` added. Phase 4 UI Policy "Location is mandatory unless the session is Virtual" created (action: location mandatory, reverse if false).
+- 2026-11-01 — Phase 5: public GitHub repository published at https://github.com/sparsh17max/servicenow-employee-training-management (one commit per phase, author line in README).
+- 2026-11-01 — Phase 4: Client Script *Validate End Date after Start Date* prepared as `scripts/08-client-script-end-date.js` (idempotent, app scope). Not yet applied to the PDI: the Table API rejected the stored admin credentials (HTTP 401); pending a password refresh, then TC-11.

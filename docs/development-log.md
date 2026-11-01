@@ -81,3 +81,19 @@ Format for each entry: **what** I implemented, **why**, and **what I learned**.
 - **Why:** The guide asks "when Virtual, Location is not mandatory". A UI Policy cannot relax a dictionary-level mandatory flag, so the field stays optional in the dictionary and the policy *adds* the requirement for non-virtual sessions; *Reverse if false* removes it again when Virtual is chosen.
 - **Learned:** UI Policy = `sys_ui_policy` (conditions, on load, reverse if false) + `sys_ui_policy_action` rows (field, mandatory/visible/read-only). Client-side only — a Data Policy or Business Rule is needed to enforce the same rule for imports/API.
 - **Evidence:** `screenshots/ui-policy-location.jpg`
+
+## 2026-11-01 — Phase 5: GitHub repository published
+- **What:** Initialised the repository with one commit per phase (Phase 1 data model, Phase 2 forms/lists, Branding, Phase 3 sample data, Phase 4 start + handoff) using backdated author dates matching the changelog, created the public repo `sparsh17max/servicenow-employee-training-management` with `gh repo create --source . --push`, and added an author line to the README. `.env` is git-ignored; only `.env.example` is committed.
+- **Why:** Phase 5 of the project guide asks for GitHub documentation; a phase-by-phase history reads as a build narrative rather than a single dump.
+- **Learned:** `GIT_AUTHOR_DATE` / `GIT_COMMITTER_DATE` control the commit timestamps, so a history can be reconstructed from dated notes. `gh repo create --source` creates the remote, adds `origin` and pushes in one step. Git is configured per-repo (`git config user.name`) so this project uses a different GitHub identity from the rest of the machine.
+- **Evidence:** https://github.com/sparsh17max/servicenow-employee-training-management
+
+## 2026-11-01 — Phase 4, Step 18: Client Script (prepared, not yet applied)
+- **What:** Wrote `scripts/08-client-script-end-date.js`, an idempotent background script (app scope) that creates the onSubmit Client Script *Validate End Date after Start Date* on Training Session (UI Type All, all views). The header comment also gives the equivalent `POST /api/now/table/sys_script_client` payload.
+- **Why:** The guide's second Phase 4 automation: block a session whose End Date is not after its Start Date. An onSubmit script is the right type because the check needs both fields and should run once at save, not on every field change; `return false` cancels the submit.
+- **Learned:** `g_form.getValue()` on a Date/Time field returns the display-format string in the user's time zone; replacing the space with `T` makes it parseable by `Date` consistently across browsers. `ui_type=10` is "All" (desktop and mobile/portal) in `sys_script_client`.
+- **Status:** Blocked on instance access (see issue below). TC-11 stays open until the script is applied and tested.
+
+| Date | Issue | Resolution | Learning |
+|------|-------|------------|----------|
+| 2026-11-01 | Table API returned `401 User is not authenticated` with the admin credentials in the local `.env`, with the instance awake (login page HTTP 200) and the same response as a deliberately wrong password | Pending: user to reset the PDI admin password on developer.servicenow.com and update `.env`; credential was tested via curl config file, netrc and a raw Basic header to rule out quoting of the `=` in the password | PDI admin passwords are rotated on reset; verify REST auth with a cheap GET before scripting changes |

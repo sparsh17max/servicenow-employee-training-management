@@ -13,3 +13,4 @@ The same results can be achieved through the UI (*Configure → Form Layout / Li
 | `05-branding-properties.js` | Sets UI16 header properties (caption, tab title, colours, banner image name) and marks Novatrix Solutions as the primary company | Branding |
 | `06-upload-logo-browser.js` | Browser-console helper that uploads the logo PNG to the `db_image` record through the Attachment REST API | Branding |
 | `07-sample-data.js` | Creates the Phase 3 sample data: 6 courses, 6 sessions, 14 enrollments, 6 certifications (idempotent) — run in the **app** scope | 3 |
+| `08-client-script-end-date.js` | Creates the onSubmit Client Script *Validate End Date after Start Date* on Training Session (idempotent) — run in the **app** scope; the header comment gives the equivalent Table API call | 4 |
