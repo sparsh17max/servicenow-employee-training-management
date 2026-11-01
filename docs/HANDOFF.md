@@ -16,8 +16,10 @@ Built so far in chat with Claude (browser-driven). Continue in Claude Code.
 | 2 Forms/lists/related lists/views | ✅ incl. HR + Training Manager views on Enrollment |
 | Branding | ✅ Novatrix company (primary), logo in header (`db_image` novatrix-header.png), header colours, tab title |
 | 3 Sample data + tests | ✅ 6 courses, 6 sessions, 14 enrollments, 6 certs; TC-01…09 passed |
-| 4 Automation | 🟡 UI Policy done; Client Script, Business Rule, Flow, Notifications, Reports/Dashboard pending |
-| 5 Portfolio docs | 🟡 docs written continuously; GitHub push pending |
+| 4 Automation | 🟡 Done via API (2026-11-01): UI Policy, Client Script, Business Rule, ENR auto-number, 4 notifications + 2 daily jobs, 5 reports. **Browser-only, pending:** Flow Designer approval (4.4) and Platform Analytics dashboard (4.6) — see `docs/manual-steps.md` |
+| 5 Portfolio docs | 🟡 GitHub repo published (sparsh17max/servicenow-employee-training-management); Notion tracker maintained |
+
+> **Instance access note (2026-11-01):** HTTP Basic auth to the Table API returns 401 for the admin user even with the correct password. Use **session auth** instead: POST `/login.do` (user_name, user_password, sys_action=sysverb_login, sysparm_ck from the login page), keep the cookies, read `g_ck` from any UI page and send it as `X-UserToken`. Background scripts work the same way via POST `/sys.scripts.do` with `sys_scope` = app sys_id `3416793893989310803931697bba102d`. Set the session's application first with `PUT /api/now/ui/concoursepicker/application {"app_id": …}` so metadata lands in the app scope.
 
 Navigator Favorites already set for admin: ETCMS modules, Scripts - Background, Flow Designer, App Engine Studio.
 

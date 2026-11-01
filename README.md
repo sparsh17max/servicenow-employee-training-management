@@ -19,8 +19,8 @@ A custom scoped ServiceNow application that helps an organisation manage employe
 - App Engine Studio / Table Builder
 - Tables, Dictionary, Choice lists
 - Reference fields and Related lists
-- Flow Designer (planned)
-- Reporting and Dashboards (planned)
+- UI Policies, Client Scripts, Business Rules, Notifications, Scheduled Jobs
+- Reporting (dashboard and Flow Designer approval in progress)
 
 ## Application Architecture
 Four custom tables inside the scope `x_2186817_employ_0_` (see [docs/architecture.md](docs/architecture.md)):
@@ -38,8 +38,8 @@ Existing ServiceNow User records are referenced for employees and trainers; no s
 | 1 | Application and data model | ✅ Complete (2026-10-30) |
 | 2 | Forms, lists and related lists | ✅ Complete (2026-10-30) |
 | 3 | Sample data and testing | ✅ Complete (2026-10-31) |
-| 4 | Business logic and automation | 🟡 In progress |
-| 5 | Reports, dashboards and documentation | ⬜ Not started |
+| 4 | Business logic and automation | 🟡 UI Policy, Client Script, Business Rule, auto-numbering, notifications, reminder jobs and reports done; approval flow and dashboard are browser steps ([docs/manual-steps.md](docs/manual-steps.md)) |
+| 5 | Reports, dashboards and documentation | 🟡 GitHub published; Notion tracker maintained |
 
 Step-by-step notes, with screenshots, live in [docs/development-log.md](docs/development-log.md).
 
