@@ -14,3 +14,4 @@ The same results can be achieved through the UI (*Configure → Form Layout / Li
 | `06-upload-logo-browser.js` | Browser-console helper that uploads the logo PNG to the `db_image` record through the Attachment REST API | Branding |
 | `07-sample-data.js` | Creates the Phase 3 sample data: 6 courses, 6 sessions, 14 enrollments, 6 certifications (idempotent) — run in the **app** scope | 3 |
 | `08-client-script-end-date.js` | Creates the onSubmit Client Script *Validate End Date after Start Date* on Training Session (idempotent) — run in the **app** scope; the header comment gives the equivalent Table API call | 4 |
+| `09-business-rule-completed-date.js` | Creates the before insert/update Business Rule *Completed requires Completion Date* on Course Enrollment (idempotent) — run in the **app** scope | 4 |

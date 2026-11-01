@@ -13,4 +13,4 @@
 | TC-09 | Filter by status | Enrollment list → filter Enrollment Status = Enrolled | Only matching records shown | Filter Enrollment Status = Completed returned 7 of 14 records (2026-10-31) | ✅ |
 | TC-10 | Virtual session location (Phase 4) | Set Delivery Mode = Virtual | Location no longer mandatory | | ⬜ |
 | TC-11 | End date validation (Phase 4) | End Date < Start Date → Submit | Submission blocked with message | Blocked with "Session not saved: End Date must be later than Start Date." + field message; no record created. Corrected End Date saved normally (2026-11-01) | ✅ |
-| TC-12 | Completed without date (Phase 4) | Status = Completed, no Completion Date → Save | Server aborts save with error | | ⬜ |
+| TC-12 | Completed without date (Phase 4) | Status = Completed, no Completion Date → Save | Server aborts save with error | UI Update rejected with "An enrollment cannot be marked Completed until its Completion Date is populated."; REST PATCH and POST return 403 aborted by Business Rule; with a date the save succeeds (2026-11-01) | ✅ |
