@@ -2,6 +2,8 @@
 
 ![ETCMS logo](screenshots/etcms-logo.png)
 
+**Author:** Sparsh Varde ([@sparsh17max](https://github.com/sparsh17max))
+
 ## Project Overview
 A custom scoped ServiceNow application that helps an organisation manage employee training courses, scheduled sessions, enrolments and professional certifications — replacing spreadsheets and email with a single platform.
 
