@@ -178,3 +178,9 @@ Format for each entry: **what** I implemented, **why**, and **what I learned**.
 ## 2026-11-02 — Housekeeping (approved by the owner)
 - **What:** Deleted the TC-11 test session *TC-11 End Date validation* (no enrolments referenced it; six sessions remain), the two stray *Reminder: Analytics Workshop starts c88a08a1…* outbox emails from 2026-11-01 12:31, and the 11 orphan `sys_ui_bookmark` rows from Phase 3. All via the Table API after listing each set first.
 - **Kept:** the five TC-18 enrolments for Beth Anglin (ENR0001016 Enrolled, ENR0001017–ENR0001020 Cancelled) and their approval records — they are the evidence for the approval flow; listed in HANDOFF as optional clean-up.
+
+## 2026-11-02 — TC-18 test-data clean-up (approved by the owner)
+- **What:** Deleted enrolments ENR0001017, ENR0001018, ENR0001019 and ENR0001020 (all Cancelled; the rejection and cancelled-vs-rejected diagnostic runs) and their four `sysapproval_approver` records via the Table API, after listing them first. Kept ENR0001016 (Enrolled through the approval flow) and its approved approval as evidence for TC-18.
+- **Why:** The owner preferred a clean data set; one record is enough to show the approval path, and the rejection path is documented in the Step 23 entry and screenshots.
+- **Result:** Course Enrollment holds 15 records; no approvals remain for the deleted enrolments. The dashboard's *Enrolments by Status* donut now shows 15 instead of 19 (4 fewer Cancelled). The flow contexts of the deleted runs remain in Workflow Studio's execution history.
+

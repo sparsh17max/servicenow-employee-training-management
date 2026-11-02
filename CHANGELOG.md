@@ -20,3 +20,4 @@
 - 2026-11-02 — Phase 4: Flow Designer flow *ETCMS Enrolment Approval* built in Workflow Studio (trigger Course Enrollment created with status Requested; manager approval with *Training Managers* fallback; Approved → Enrolled, Rejected/Cancelled → Cancelled) and activated. TC-18 passed end to end (approve and reject as Fred Luddy). Flow reporting level set to BASIC.
 - 2026-11-02 — Phase 4: Platform Analytics dashboard *Training & Certification Overview* with the five reports as widgets, shared with *Training Managers*; `scripts/13-dashboard-widgets.js` added. TC-19 passed. Phase 4 complete.
 - 2026-11-02 — Housekeeping: TC-11 test session, two stray reminder outbox emails and 11 orphan `sys_ui_bookmark` rows deleted (approved by the owner). Test enrolments ENR0001016–ENR0001020 from TC-18 kept as data.
+- 2026-11-02 — TC-18 clean-up: ENR0001017–ENR0001020 (rejection/diagnostic runs) and their four approval records deleted; ENR0001016 kept. 15 enrolments remain.

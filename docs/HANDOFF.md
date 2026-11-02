@@ -85,7 +85,7 @@ Course Enrollment has no display field → add `number` (String, auto-number pre
 - Instance time zone is America/Los_Angeles; Asia/Kolkata is not in the available-time-zone list.
 - Flow Designer: *Ask For Approval* reports **`cancelled`**, not `rejected`, when the single approver rejects; the flow's rejection branches therefore test Rejected OR Cancelled. Flow reporting (`com.snc.process_flow.reporting.level`) is set to BASIC so Workflow Studio → Operations shows step states.
 - Platform Analytics in-line editor (Add element → Data visualization / Saved Visualization) freezes the Chrome-extension renderer; widgets were created through the `par_*` tables instead (`scripts/13-dashboard-widgets.js`). Viewing, editing layout and sharing in the browser works.
-- TC-18 left five test enrolments for Beth Anglin on *SN Fundamentals Batch 2* (ENR0001016 Enrolled, ENR0001017–ENR0001020 Cancelled); delete them if the original 14-record data set is preferred.
+- TC-18 test data: ENR0001016 (Beth Anglin, SN Fundamentals Batch 2, Enrolled via the flow) is kept as the approval-path evidence; ENR0001017–ENR0001020 and their approvals were deleted on 2026-11-02. Course Enrollment now holds 15 records.
 - `GlideSysAttachment.writeBase64()` silently fails from background scripts on this release; use the Attachment REST API.
 - Basic Configuration UI16 page would not save while in app scope; set `sys_properties` from global.
 - Demo user `joe.employee` does not exist in this PDI.
