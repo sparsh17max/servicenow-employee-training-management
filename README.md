@@ -20,7 +20,8 @@ A custom scoped ServiceNow application that helps an organisation manage employe
 - Tables, Dictionary, Choice lists
 - Reference fields and Related lists
 - UI Policies, Client Scripts, Business Rules, Notifications, Scheduled Jobs
-- Reporting (dashboard and Flow Designer approval in progress)
+- Flow Designer (Workflow Studio) approval flow
+- Reporting and Platform Analytics dashboard
 
 ## Application Architecture
 Four custom tables inside the scope `x_2186817_employ_0_` (see [docs/architecture.md](docs/architecture.md)):
@@ -38,8 +39,8 @@ Existing ServiceNow User records are referenced for employees and trainers; no s
 | 1 | Application and data model | ✅ Complete (2026-10-30) |
 | 2 | Forms, lists and related lists | ✅ Complete (2026-10-30) |
 | 3 | Sample data and testing | ✅ Complete (2026-10-31) |
-| 4 | Business logic and automation | 🟡 UI Policy, Client Script, Business Rule, auto-numbering, notifications, reminder jobs and reports done; approval flow and dashboard are browser steps ([docs/manual-steps.md](docs/manual-steps.md)) |
-| 5 | Reports, dashboards and documentation | 🟡 GitHub published; Notion tracker maintained |
+| 4 | Business logic and automation | ✅ Complete (2026-11-02): UI Policy, Client Script, Business Rule, auto-numbering, notifications, reminder jobs, reports, Flow Designer approval flow and Platform Analytics dashboard |
+| 5 | Reports, dashboards and documentation | ✅ GitHub published; Notion tracker maintained; dashboard delivered with Phase 4 |
 
 Step-by-step notes, with screenshots, live in [docs/development-log.md](docs/development-log.md).
 
@@ -50,10 +51,9 @@ See [docs/test-cases.md](docs/test-cases.md).
 See the *Concepts learned* column in the development log and the issue log in [docs/development-log.md](docs/development-log.md#issue-log).
 
 ## Future Enhancements
-- Automated enrolment approvals (Flow Designer).
-- Certification expiry reminders (scheduled flow + notification).
-- Training analytics dashboard.
+- Convert the two daily reminder Scheduled Jobs to scheduled flows.
 - Improved application security (ACLs per role).
+- Employee self-service portal page for enrolment requests.
 
 ## Demo environment
 

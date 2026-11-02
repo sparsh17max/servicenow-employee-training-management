@@ -16,8 +16,8 @@ Built so far in chat with Claude (browser-driven). Continue in Claude Code.
 | 2 Forms/lists/related lists/views | ✅ incl. HR + Training Manager views on Enrollment |
 | Branding | ✅ Novatrix company (primary), logo in header (`db_image` novatrix-header.png), header colours, tab title |
 | 3 Sample data + tests | ✅ 6 courses, 6 sessions, 14 enrollments, 6 certs; TC-01…09 passed |
-| 4 Automation | 🟡 Done via API (2026-11-01): UI Policy, Client Script, Business Rule, ENR auto-number, 4 notifications + 2 daily jobs, 5 reports. **Browser-only, pending:** Flow Designer approval (4.4) and Platform Analytics dashboard (4.6) — see `docs/manual-steps.md` |
-| 5 Portfolio docs | 🟡 GitHub repo published (sparsh17max/servicenow-employee-training-management); Notion tracker maintained |
+| 4 Automation | ✅ Complete (2026-11-02): UI Policy, Client Script, Business Rule, ENR auto-number, 4 notifications + 2 daily jobs, 5 reports, Flow Designer flow *ETCMS Enrolment Approval* (sys_id `e7871c39935c5b10803931697bba1091`, active), Platform Analytics dashboard *Training & Certification Overview* (`par_dashboard` `ead120f193109b10803931697bba106c`, shared with Training Managers) |
+| 5 Portfolio docs | ✅ GitHub repo published (sparsh17max/servicenow-employee-training-management); Notion tracker rows all Completed |
 
 > **Instance access note (2026-11-01):** HTTP Basic auth to the Table API returns 401 for the admin user even with the correct password. Use **session auth** instead: POST `/login.do` (user_name, user_password, sys_action=sysverb_login, sysparm_ck from the login page), keep the cookies, read `g_ck` from any UI page and send it as `X-UserToken`. Background scripts work the same way via POST `/sys.scripts.do` with `sys_scope` = app sys_id `3416793893989310803931697bba102d`. Set the session's application first with `PUT /api/now/ui/concoursepicker/application {"app_id": …}` so metadata lands in the app scope.
 
@@ -83,10 +83,12 @@ Course Enrollment has no display field → add `number` (String, auto-number pre
 
 ## Known issues / notes
 - Instance time zone is America/Los_Angeles; Asia/Kolkata is not in the available-time-zone list.
-- 11 orphan `sys_ui_bookmark` rows (titles starting "ETCMS ·", "Novatrix ·", "Scripts - Background", "Flow Designer") created via REST are not rendered by Next Experience; ask before deleting.
+- Flow Designer: *Ask For Approval* reports **`cancelled`**, not `rejected`, when the single approver rejects; the flow's rejection branches therefore test Rejected OR Cancelled. Flow reporting (`com.snc.process_flow.reporting.level`) is set to BASIC so Workflow Studio → Operations shows step states.
+- Platform Analytics in-line editor (Add element → Data visualization / Saved Visualization) freezes the Chrome-extension renderer; widgets were created through the `par_*` tables instead (`scripts/13-dashboard-widgets.js`). Viewing, editing layout and sharing in the browser works.
+- TC-18 left five test enrolments for Beth Anglin on *SN Fundamentals Batch 2* (ENR0001016 Enrolled, ENR0001017–ENR0001020 Cancelled); delete them if the original 14-record data set is preferred.
 - `GlideSysAttachment.writeBase64()` silently fails from background scripts on this release; use the Attachment REST API.
 - Basic Configuration UI16 page would not save while in app scope; set `sys_properties` from global.
 - Demo user `joe.employee` does not exist in this PDI.
 
 ## Docs map
-`README.md` · `docs/business-requirements.md` · `docs/architecture.md` · `docs/data-dictionary.md` · `docs/sample-data.md` · `docs/test-cases.md` · `docs/development-log.md` · `CHANGELOG.md` · `scripts/` (01–07 + README) · `brand/` · `screenshots/`
+`README.md` · `docs/business-requirements.md` · `docs/architecture.md` · `docs/data-dictionary.md` · `docs/sample-data.md` · `docs/test-cases.md` · `docs/development-log.md` · `CHANGELOG.md` · `scripts/` (01–13 + README) · `docs/manual-steps.md` · `brand/` · `screenshots/`

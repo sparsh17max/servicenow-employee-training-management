@@ -17,4 +17,5 @@ The same results can be achieved through the UI (*Configure → Form Layout / Li
 | `09-business-rule-completed-date.js` | Creates the before insert/update Business Rule *Completed requires Completion Date* on Course Enrollment (idempotent) — run in the **app** scope | 4 |
 | `10-enrollment-number-field.js` | Adds the ENR auto-number (sys_number, display field, back-fill, layouts) to Course Enrollment (idempotent) — run in the **app** scope | 4 |
 | `11-notifications-and-jobs.js` | Creates the Training Managers group, two events, four notifications and two daily reminder jobs (idempotent) — run in the **app** scope | 4 |
-| `12-reports.js` | Creates the five dashboard reports (idempotent) — run in the **app** scope; the dashboard itself is built in the browser (`docs/manual-steps.md`) | 4 |
+| `12-reports.js` | Creates the five dashboard reports (idempotent) — run in the **app** scope | 4 |
+| `13-dashboard-widgets.js` | Creates the Platform Analytics dashboard *Training & Certification Overview* (par_dashboard, tab, canvas layout, five widgets, Training Managers share) (idempotent) — run in the **app** scope | 4 |

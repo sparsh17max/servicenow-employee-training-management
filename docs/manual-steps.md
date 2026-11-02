@@ -1,5 +1,7 @@
 # Manual steps (browser only)
 
+> **Status 2026-11-02: all three sections are done.** §A was built in Workflow Studio with the Claude in Chrome extension (TC-18 ✅); §B was created in the Platform Analytics library and its widgets inserted via the `par_*` tables because the in-line editor froze the browser renderer (TC-19 ✅, reproducible as `scripts/13-dashboard-widgets.js`); §C deletions were approved and executed. The steps are kept as the reference procedure for rebuilding on a fresh PDI.
+
 Two Phase 4 items cannot be authored through the REST/Table API on this release and must be clicked together in the PDI.
 Everything they depend on is already in place (see `docs/development-log.md`, 2026-11-01 entries).
 
@@ -17,18 +19,18 @@ Steps (All → Flow Designer, application scope **Employee Training and Certific
    - Inside the **If**: **Action → ServiceNow Core → Ask for Approval**. Record = *Trigger ▸ Course Enrollment Record*. Rules: *Approve when* **Anyone approves** → *Users* = *Trigger ▸ Course Enrollment Record ▸ Employee ▸ Manager*. Done.
    - **Else**: **Ask for Approval** again, Record = trigger record, *Approve when* **Anyone approves** → *Groups* = **Training Managers**. Done.
    (Simpler alternative if you prefer one action: a single Ask for Approval with *Users* = Employee ▸ Manager **and** *Groups* = Training Managers, rule "Anyone approves".)
-4. **Flow Logic → If**: *1 ▸ Approval State* (from the first Ask for Approval; use *2 ▸* for the else branch) **is** `Approved`.
+4. **Inside each branch** (data pills from a step inside an If are not available outside it): **Flow Logic → If**: *2 ▸ Approval State* (the branch's own Ask for Approval; *8 ▸* in the else branch) **is** `Approved`.
    - **Action → ServiceNow Core → Update Record**: Record = *Trigger ▸ Course Enrollment Record*, Table auto-fills, Fields: **Enrollment Status = Enrolled**. Done.
-5. **Else If** approval state **is** `Rejected` → **Update Record**: **Enrollment Status = Cancelled**.
+5. **Else If** approval state **is** `Rejected` **OR is** `Cancelled` (Ask for Approval reports *cancelled* when the single approver rejects) → **Update Record**: **Enrollment Status = Cancelled**.
 6. **Save**, then **Activate** (top right). Confirm the flow shows *Active*.
 
-Test (TC-17):
+Test (TC-18):
 1. All → ETCMS → Course Enrollments → **New**: Employee *Beth Anglin*, Training Session *SN Fundamentals Batch 2*, Enrollment Status *Requested* → Submit (it gets number ENR0001015 or next).
 2. Open the record's **Approvers** related list (or *Self-Service → My Approvals* impersonating Fred Luddy): one approval for Fred Luddy, state *Requested*.
 3. Set the approval to **Approved** → the enrollment flips to *Enrolled* and *System Mailboxes → Outbox* shows *Enrolment ENR… approved: SN Fundamentals Batch 2* to beth.anglin@example.com.
 4. Repeat with a second request and **Reject** it → status *Cancelled*, rejection email in the outbox.
 5. Screenshots to take: the flow canvas (`screenshots/flow-enrolment-approval.png`), the approval record (`screenshots/flow-approval-record.png`), the enrollment after approval (`screenshots/flow-enrollment-enrolled.png`).
-6. Record the results in `docs/test-cases.md` (TC-17), the dev log, the changelog and the Notion row *Build Flow Designer workflow*.
+6. Record the results in `docs/test-cases.md` (TC-18), the dev log, the changelog and the Notion row *Build Flow Designer workflow*.
 
 Optional (HANDOFF 4.5 wording): the two daily reminders currently run as **Scheduled Script Executions** (`System Definition → Scheduled Jobs → ETCMS - …`). If you want them as *scheduled flows* instead: Flow Designer → New → Flow, trigger **Daily** 06:00, action **Look Up Records** (Training Session, *Start date on or after Today AND on or before 3 days from now AND Session Status is not Cancelled*), **For Each** → **Look Up Records** (Course Enrollment, Training Session = item, Status = Enrolled) → **For Each** → **Send Email** to *Employee ▸ Email*. Then deactivate the matching scheduled job.
 
@@ -40,9 +42,11 @@ The five reports exist (`scripts/12-reports.js`): *Enrolments by Status*, *Cours
 2. **Edit** → **Add widget** → **Reports** (or *Data visualizations → Reports*) → search the title → add, for each of the five reports. Suggested layout: four charts in a 2 × 2 grid, the *Upcoming Training Sessions* list full-width underneath.
 3. Rename widget headers if the report title is not picked up. **Save**.
 4. **Share** → *Groups* **Training Managers** (and optionally *Everyone* for the portfolio demo).
-5. Screenshot the dashboard to `screenshots/dashboard-training-overview.png`, then update `docs/development-log.md`, `CHANGELOG.md`, `docs/test-cases.md` (TC-18) and the Notion row *Create reports and dashboard* → Completed.
+5. Screenshot the dashboard to `screenshots/dashboard-training-overview.png`, then update `docs/development-log.md`, `CHANGELOG.md`, `docs/test-cases.md` (TC-19) and the Notion row *Create reports and dashboard* → Completed.
 
-## C. Housekeeping (optional, deletions need a decision)
+If the in-line editor's *Data visualization* / *Saved Visualization* dialog hangs the browser (it did on 2026-11-02), run `scripts/13-dashboard-widgets.js` in the app scope instead: it creates the dashboard, tab, canvas layout, the five widgets and the Training Managers share.
+
+## C. Housekeeping (done 2026-11-02 — all three deletions approved by the owner)
 
 - Test session **TC-11 End Date validation** (sys_id `5008c86d935cd710803931697bba1040`) — created by the TC-11 positive control; now set to *Cancelled* with course *ServiceNow Fundamentals* so it looks like real data. Delete it if you prefer exactly six sessions.
 - One stray outbox email *Reminder: Analytics Workshop starts c88a08a1…* (`sys_email`, 2026-11-01 12:31) produced while the reminder notification was briefly misconfigured. Harmless; delete for a clean outbox.
