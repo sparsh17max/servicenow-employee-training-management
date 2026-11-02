@@ -184,3 +184,8 @@ Format for each entry: **what** I implemented, **why**, and **what I learned**.
 - **Why:** The owner preferred a clean data set; one record is enough to show the approval path, and the rejection path is documented in the Step 23 entry and screenshots.
 - **Result:** Course Enrollment holds 15 records; no approvals remain for the deleted enrolments. The dashboard's *Enrolments by Status* donut now shows 15 instead of 19 (4 fewer Cancelled). The flow contexts of the deleted runs remain in Workflow Studio's execution history.
 
+## 2026-11-02 — TC-10 run and README polish
+- **What:** Ran TC-10, which had never been executed. On a new Training Session form, *Location* was mandatory with Delivery Mode empty or In Person, not mandatory after switching to Virtual, and mandatory again after switching back; the form was not saved. Rewrote the README for recruiters (hero image, *What I built* with counts and evidence links, phase table with Phase 5 deliverables and ACLs as planned Phase 6, Screenshots grid, *How this was built*). Moved `CLAUDE.md` and `notion-tracker-import.csv` from the root into `docs/`.
+- **Why:** The README claims 19 passed test cases, so the one outstanding test had to be run first rather than the number rounded up.
+- **Learned:** `g_form.isMandatory()` read straight from the form after `setValue()` is a quick way to verify a UI Policy without saving a record.
+

@@ -1,3 +1,5 @@
+> Note: these are the working instructions given to the AI coding assistant (Claude Code) during the build; paths are relative to the repository root.
+
 # ETCMS — Claude Code project instructions
 
 This repository documents a **ServiceNow portfolio application** built in a Personal Developer Instance.

@@ -21,3 +21,5 @@
 - 2026-11-02 — Phase 4: Platform Analytics dashboard *Training & Certification Overview* with the five reports as widgets, shared with *Training Managers*; `scripts/13-dashboard-widgets.js` added. TC-19 passed. Phase 4 complete.
 - 2026-11-02 — Housekeeping: TC-11 test session, two stray reminder outbox emails and 11 orphan `sys_ui_bookmark` rows deleted (approved by the owner). Test enrolments ENR0001016–ENR0001020 from TC-18 kept as data.
 - 2026-11-02 — TC-18 clean-up: ENR0001017–ENR0001020 (rejection/diagnostic runs) and their four approval records deleted; ENR0001016 kept. 15 enrolments remain.
+- 2026-11-02 — TC-10 (UI Policy, Virtual sessions) run and passed; 19 of 19 test cases now pass.
+- 2026-11-02 — README rewritten for recruiters: hero dashboard image, *What I built*, phase table with Phase 5 deliverables and Phase 6 (ACLs) planned, Screenshots grid, *How this was built*. `CLAUDE.md` moved to `docs/CLAUDE.md`; `notion-tracker-import.csv` moved to `docs/`.

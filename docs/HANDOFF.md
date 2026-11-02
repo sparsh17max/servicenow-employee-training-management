@@ -91,4 +91,4 @@ Course Enrollment has no display field → add `number` (String, auto-number pre
 - Demo user `joe.employee` does not exist in this PDI.
 
 ## Docs map
-`README.md` · `docs/business-requirements.md` · `docs/architecture.md` · `docs/data-dictionary.md` · `docs/sample-data.md` · `docs/test-cases.md` · `docs/development-log.md` · `CHANGELOG.md` · `scripts/` (01–13 + README) · `docs/manual-steps.md` · `brand/` · `screenshots/`
+`README.md` · `docs/business-requirements.md` · `docs/architecture.md` · `docs/data-dictionary.md` · `docs/sample-data.md` · `docs/test-cases.md` · `docs/development-log.md` · `CHANGELOG.md` · `scripts/` (01–13 + README) · `docs/manual-steps.md` · `docs/CLAUDE.md` (assistant instructions, moved from the root) · `docs/notion-tracker-import.csv` · `brand/` · `screenshots/`
