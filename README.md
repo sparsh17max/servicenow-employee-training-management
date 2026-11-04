@@ -68,6 +68,9 @@ See the *Learned* notes and the issue tables in [docs/development-log.md](docs/d
 - Convert the two daily reminder Scheduled Jobs to scheduled flows.
 - Employee self-service portal page for enrolment requests.
 
+## Related project
+**NJO enrols joiners into ETCMS.** The [New Joiner Onboarding Orchestrator](https://github.com/sparsh17max/servicenow-new-joiner-onboarding) (scope `x_2186817_njo`) enrols every new joiner in the next *Security Awareness* session. For this, ETCMS provides two subflows in its own scope, *Enroll in Security Awareness* and *Link Enrollment to Employee*, and allows other scopes to create and update Course Enrollment. An NJO-scoped flow cannot write ETCMS tables on this instance, even with those settings, so the writes run in ETCMS's scope. The design is described in the NJO [architecture](https://github.com/sparsh17max/servicenow-new-joiner-onboarding/blob/main/docs/architecture.md#integration-with-etcms).
+
 ## Demo environment
 The PDI is branded as a fictional customer, **Novatrix Solutions** (primary company record, logo and header colours), so screenshots read like a real tenant. Brand assets are in `brand/`.
 
